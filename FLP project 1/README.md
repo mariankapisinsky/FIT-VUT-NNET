@@ -1,6 +1,6 @@
 # FLP 2021 - bkg-2-cnf
 This the school project No. 1 for the FLP course (Functional and Logic Programming).
-The assignment was to implement some algorithms for Context-Free Languages in Haskell.
+The task was to implement some algorithms for Context-Free Languages in Haskell.
 
 Usage with stdin:
 ```console
