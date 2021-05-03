@@ -1,4 +1,4 @@
-# PDS 2021 - Identification of Mobile Traffic using TLS Fingerprinting
+# PDS 2021 - Identification of Mobile Traffic Using TLS Fingerprinting
 This is the school project for the PDS course (Data Communications, Computer Networks and Protocols).
 The assignment was Identification of Mobile Traffic using TLS Fingerprinting.
 
