@@ -7,4 +7,6 @@ KRY project 1 - Vigenere cipher cryptoanalysis - 11.6/15
 
 PRL project 1 - Pipeline-Merge Sort - 9.5/10
 
+PRL project 2 - Mesh Multiplication - ?/10
+
 UPA project - Extraction, Storage, and Data Processing (COVID-19 in Czechia) - 20/20
