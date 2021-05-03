@@ -1,11 +1,11 @@
 # FIT-VUT-NNET
 Some of the school assignments from my master degree study at FIT VUT, NNET specialization
 
-FLP project 1 - Context-Free Grammar transformation algorithms (removing simple rules, Chomsky Normal Form) - 12/12
+FLP project 1 - Context-Free Grammar Transformation Algorithms (removing simple rules, Chomsky Normal Form) - 12/12
 
-KRY project 1 - Vigenere cipher cryptoanalysis - 11.6/15
+KRY project 1 - Vigenere Cipher Cryptoanalysis - 11.6/15
 
-PDS project - Identification of Mobile Traffic using TLS Fingerprinting - ?/25
+PDS project - Identification of Mobile Traffic Using TLS Fingerprinting - ?/25
 
 PRL project 1 - Pipeline-Merge Sort - 9.5/10
 
