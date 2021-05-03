@@ -1,0 +1,6 @@
+ip.src;ip.dst;SNI
+10.0.2.16;217.12.48.97;app.slovakrail.sk
+10.0.2.16;37.9.175.3;www.slovakrail.sk
+10.0.2.16;217.12.48.93;www.zssk.sk
+10.0.2.16;217.12.52.141;ikvc.slovakrail.sk
+10.0.2.16;217.12.48.93;predaj.zssk.sk

@@ -1,0 +1,13 @@
+ip.src;ip.dst;SNI
+10.0.2.16;23.47.213.216;apisd.ebay.com
+10.0.2.16;151.101.66.206;i.ebayimg.com
+10.0.2.16;23.47.213.143;p.ebaystatic.com
+10.0.2.16;209.140.129.41;svcs.ebay.com
+10.0.2.16;151.101.2.206;i.ebayimg.com
+10.0.2.16;209.140.129.15;svcs.ebay.com
+10.0.2.16;151.101.130.206;i.ebayimg.com
+10.0.2.16;23.6.115.105;mobidcsng.ebay.com
+10.0.2.16;93.184.221.225;ir.ebaystatic.com
+10.0.2.16;64.4.252.11;rover.ebay.com
+10.0.2.16;64.4.254.47;rover.ebay.com
+10.0.2.16;209.140.129.25;svcs.ebay.com

@@ -1,0 +1,7 @@
+ip.src;ip.dst;SNI
+10.0.2.16;13.107.43.14;www.linkedin.com
+10.0.2.16;108.174.11.37;realtime.www.linkedin.com
+10.0.2.16;152.199.21.118;media-exp1.licdn.com
+10.0.2.16;13.107.42.14;www.linkedin.com
+10.0.2.16;104.102.29.126;dms.licdn.com
+10.0.2.16;23.47.209.61;dms.licdn.com
