@@ -5,6 +5,8 @@ FLP project 1 - Context-Free Grammar transformation algorithms (removing simple 
 
 KRY project 1 - Vigenere cipher cryptoanalysis - 11.6/15
 
+PDS project - Identification of Mobile Traffic using TLS Fingerprinting - ?/25
+
 PRL project 1 - Pipeline-Merge Sort - 9.5/10
 
 PRL project 2 - Mesh Multiplication - ?/10
