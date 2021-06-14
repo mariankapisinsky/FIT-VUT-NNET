@@ -9,6 +9,6 @@ PDS project - Identification of Mobile Traffic Using TLS Fingerprinting - 25/25
 
 PRL project 1 - Pipeline-Merge Sort - 9.5/10
 
-PRL project 2 - Mesh Multiplication - ?/10
+PRL project 2 - Mesh Multiplication - 7/10
 
 UPA project - Extraction, Storage, and Data Processing (COVID-19 in Czechia) - 20/20
