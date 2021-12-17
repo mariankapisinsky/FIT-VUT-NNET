@@ -1,6 +1,6 @@
 # GAL 2021 - Longest Path Problem
 This is the school project for the GAL course (Graph Algorithms).
-The task was to implement an exact algorithm and two approximation/heuristic algorithms for the Longest Path Problem.
+The task was to implement an exact algorithm and two approximation/heuristic algorithms for the Longest Path Problem in general directed weighted graphs.
 
 Usage:
 ```console
