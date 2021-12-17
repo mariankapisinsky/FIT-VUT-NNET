@@ -5,6 +5,7 @@ The task was to implement an exact algorithm and two approximation/heuristic alg
 Usage:
 ```console
 $ python graph.py -h -v -b -g <num> -s <num> -n <num> -d <num>
+```
 
 ## Options
 
