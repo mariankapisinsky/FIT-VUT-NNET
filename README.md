@@ -3,6 +3,8 @@ Some of the school assignments from my master degree study at FIT VUT, NNET spec
 
 FLP project 1 - Context-Free Grammar Transformation Algorithms (removing simple rules, Chomsky Normal Form) - 12/12
 
+GAL project - Longest Path Problem in general directed weighted graphs - ?/25
+
 KRY project 1 - Vigenere Cipher Cryptoanalysis - 11.6/15
 
 PDS project - Identification of Mobile Traffic Using TLS Fingerprinting - 25/25
