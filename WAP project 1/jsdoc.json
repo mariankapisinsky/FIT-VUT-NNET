@@ -2,6 +2,6 @@
     "source": {
         "include": ["."],
         "includePattern": ".mjs$",
-        "excludePattern": "(test)"
+        "excludePattern": ""
     }
 }

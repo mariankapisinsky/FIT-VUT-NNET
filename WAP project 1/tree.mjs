@@ -35,33 +35,34 @@ function Tree ( compare ) {
  */ 
 
 Tree.prototype.insertValue = function( value ) {
+
     var node = new Node( value );
 
-    var root = this.root;
-
-    if ( !root ) {
+    if ( !this.root ) {
         this.root = node;
     }
+    else {
+        
+        var current = this.root;
     
-    var current = root;
-
-    while (current) {
-        if ( this.compare( node.value, current.value ) ) {
-            if (!current.left) {
-                current.left = node;
-                break;
+        while (current) {
+            if ( this.compare( node.value, current.value ) ) {
+                if (!current.left) {
+                    current.left = node;
+                    break;
+                }
+                else {
+                    current = current.left;
+                }
             }
             else {
-                current = current.left;
-            }
-        }
-        else {
-            if (!current.right) {
-                current.right = node;
-                break;
-            }
-            else {
-                current = current.right;
+                if (!current.right) {
+                    current.right = node;
+                    break;
+                }
+                else {
+                    current = current.right;
+                }
             }
         }
     }
