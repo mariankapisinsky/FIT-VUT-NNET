@@ -13,9 +13,9 @@ export { Tree };
  */ 
 
 function Node ( value ) {
-    this.value = value;
     this.left = null;
     this.right = null;
+    this.value = value;
 }
 
 /**
@@ -31,12 +31,12 @@ function Tree ( compare ) {
 
 /**
  * Insert value into the tree.
- * @param {any} value value
+ * @param {any} value a value to be inserted
  */
 
 Tree.prototype.insertValue = function ( value ) {
 
-    this.root = this.insert( this.root, value )
+    this.root = this.insert ( this.root, value )
 }
 
 /**
@@ -48,14 +48,14 @@ Tree.prototype.insertValue = function ( value ) {
 Tree.prototype.insert = function ( node, value ) {
 
     if ( !node ) {
-        return new Node( value );
+        return new Node ( value );
     }
 
     if ( this.compare( value, node.value ) ) {
-        node.left = this.insert( node.left, value )
+        node.left = this.insert ( node.left, value )
     }
     else {
-        node.right = this.insert( node.right, value )
+        node.right = this.insert ( node.right, value )
     }
 
     return node;
@@ -71,12 +71,12 @@ Tree.prototype.preorder = function* () {
     var preorderIterator = function* preorderIterator ( node ) {
         if ( node ) {
             yield node.value;
-            yield* preorderIterator(node.left);
-            yield* preorderIterator(node.right);
+            yield* preorderIterator ( node.left );
+            yield* preorderIterator ( node.right );
         }
     }
 
-    yield* preorderIterator(this.root)
+    yield* preorderIterator ( this.root )
 }
 
 /**
@@ -86,15 +86,15 @@ Tree.prototype.preorder = function* () {
 
 Tree.prototype.inorder = function* () {
 
-    var inorderIterator = function* inorderIterator( node ) {
+    var inorderIterator = function* inorderIterator ( node ) {
         if ( node ) {
-            yield* inorderIterator(node.left);
+            yield* inorderIterator ( node.left );
             yield node.value;
-            yield* inorderIterator(node.right);
+            yield* inorderIterator ( node.right );
         }
     }
 
-    yield* inorderIterator(this.root)
+    yield* inorderIterator ( this.root )
 }
 
 /**
@@ -104,13 +104,13 @@ Tree.prototype.inorder = function* () {
 
 Tree.prototype.postorder = function* () {
 
-    var postorderIterator = function* postorderIterator( node ) {
+    var postorderIterator = function* postorderIterator ( node ) {
         if ( node ) {
-            yield* postorderIterator(node.left);
-            yield* postorderIterator(node.right);
+            yield* postorderIterator ( node.left );
+            yield* postorderIterator ( node.right );
             yield node.value;
         }
     }
 
-    yield* postorderIterator(this.root)
+    yield* postorderIterator ( this.root )
 }
