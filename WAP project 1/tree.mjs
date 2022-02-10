@@ -32,41 +32,34 @@ function Tree ( compare ) {
 /**
  * Insert value into the tree.
  * @param {any} value value
- */ 
+ */
 
-Tree.prototype.insertValue = function( value ) {
+Tree.prototype.insertValue = function ( value ) {
 
-    var node = new Node( value );
+    this.root = this.insert( this.root, value )
+}
 
-    if ( !this.root ) {
-        this.root = node;
+/**
+ * Helper function for recursive value insert into the tree.
+ * @param {any} node a node to insert to
+ * @param {any} value a value to be inserted into a new node
+ */
+
+Tree.prototype.insert = function ( node, value ) {
+
+    if ( !node ) {
+        return new Node( value );
+    }
+
+    if ( this.compare( value, node.value ) ) {
+        node.left = this.insert( node.left, value )
     }
     else {
-        
-        var current = this.root;
-    
-        while (current) {
-            if ( this.compare( node.value, current.value ) ) {
-                if (!current.left) {
-                    current.left = node;
-                    break;
-                }
-                else {
-                    current = current.left;
-                }
-            }
-            else {
-                if (!current.right) {
-                    current.right = node;
-                    break;
-                }
-                else {
-                    current = current.right;
-                }
-            }
-        }
+        node.right = this.insert( node.right, value )
     }
-}
+
+    return node;
+} 
 
 /**
  * Preorder traversal.
@@ -75,8 +68,8 @@ Tree.prototype.insertValue = function( value ) {
 
 Tree.prototype.preorder = function* () {
 
-    var preorderIterator = function* preorderIterator(node) {
-        if(node) {
+    var preorderIterator = function* preorderIterator ( node ) {
+        if ( node ) {
             yield node.value;
             yield* preorderIterator(node.left);
             yield* preorderIterator(node.right);
@@ -93,8 +86,8 @@ Tree.prototype.preorder = function* () {
 
 Tree.prototype.inorder = function* () {
 
-    var inorderIterator = function* inorderIterator(node) {
-        if(node) {
+    var inorderIterator = function* inorderIterator( node ) {
+        if ( node ) {
             yield* inorderIterator(node.left);
             yield node.value;
             yield* inorderIterator(node.right);
@@ -111,8 +104,8 @@ Tree.prototype.inorder = function* () {
 
 Tree.prototype.postorder = function* () {
 
-    var postorderIterator = function* postorderIterator(node) {
-        if(node) {
+    var postorderIterator = function* postorderIterator( node ) {
+        if ( node ) {
             yield* postorderIterator(node.left);
             yield* postorderIterator(node.right);
             yield node.value;
