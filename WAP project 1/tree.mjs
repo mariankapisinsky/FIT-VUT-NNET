@@ -105,11 +105,10 @@ Tree.prototype.inorder = function* () {
 Tree.prototype.postorder = function* () {
 
     var postorderIterator = function* postorderIterator ( node ) {
-        if ( node ) {
-            yield* postorderIterator ( node.left );
-            yield* postorderIterator ( node.right );
-            yield node.value;
-        }
+
+        yield* postorderIterator ( node.left );
+        yield* postorderIterator ( node.right );
+        yield node.value;
     }
 
     yield* postorderIterator ( this.root )
