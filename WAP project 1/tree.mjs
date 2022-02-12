@@ -69,7 +69,9 @@ Tree.prototype.insert = function ( node, value ) {
 Tree.prototype.preorder = function* () {
 
     var preorderIterator = function* preorderIterator ( node ) {
+
         if ( node ) {
+
             yield node.value;
             yield* preorderIterator ( node.left );
             yield* preorderIterator ( node.right );
@@ -87,7 +89,9 @@ Tree.prototype.preorder = function* () {
 Tree.prototype.inorder = function* () {
 
     var inorderIterator = function* inorderIterator ( node ) {
+
         if ( node ) {
+
             yield* inorderIterator ( node.left );
             yield node.value;
             yield* inorderIterator ( node.right );
@@ -106,9 +110,12 @@ Tree.prototype.postorder = function* () {
 
     var postorderIterator = function* postorderIterator ( node ) {
 
-        yield* postorderIterator ( node.left );
-        yield* postorderIterator ( node.right );
-        yield node.value;
+        if ( node ) {
+            
+            yield* postorderIterator ( node.left );
+            yield* postorderIterator ( node.right );
+            yield node.value;
+        }
     }
 
     yield* postorderIterator ( this.root )
