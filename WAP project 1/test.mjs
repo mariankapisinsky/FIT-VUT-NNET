@@ -4,53 +4,94 @@
  * @file test.mjs
  */
 
+import * as fs from "fs";
+
 import { Tree } from "./tree.mjs";
 
-function preorder ( t ) {
+function equals ( a, b ) {
+    return a.length === b.length && a.every((v, i) => v === b[i]);
+}
 
-    console.log("preorder")
+function preorder ( t, gt ) {
+
+    let output = Array();
+
     for (let n of t.preorder()) {
-        console.log(n);
+        output.push(n);
+    }
+
+    if (equals(output, gt)) {
+        console.log("[OK] Preorder passed");
+    }
+    else {
+        console.log("[FAIL] Preorder failed");
     }
 }
 
-function inorder ( t ) {
+function inorder ( t, gt ) {
 
-    console.log("inorder")
+    let output = Array();
+
     for (let n of t.inorder()) {
-        console.log(n);
+        output.push(n);
+    }
+
+    if (equals(output, gt)) {
+        console.log("[OK] Inorder passed");
+    }
+    else {
+        console.log("[FAIL] Inorder failed");
     }
 }
 
-function postorder ( t ) {
+function postorder ( t, gt ) {
 
-    console.log("postorder")
+    let output = Array();
+
     for (let n of t.postorder()) {
-        console.log(n);
+        output.push(n);
+    }
+
+    if (equals(output, gt)) {
+        console.log("[OK] Postorder passed");
+    }
+    else {
+        console.log("[FAIL] Postorder failed");
     }
 }
 
-function run ( inputs ) {
+function run ( files ) {
     
-    inputs.forEach( function (input) {
+    files.forEach( function ( ifile ) {
+
+        const input = fs.readFileSync( ifile, "utf-8" ).split(",").map(Number);
+
+        let filename = ifile.slice(0, -3);
+        let ofile = filename + ".out";
+
+        const output = fs.readFileSync( ofile, "utf-8" ).split("\n");
+
+        console.log("[TEST] Test file: " + filename)
+
+        let preorderOutput = output[1].split(",").map(Number);
+
+        let inorderOutput = output[3].split(",").map(Number);
+
+        let postorderOutput = output[5].split(",").map(Number);
 
         let t = new Tree ( (a,b) => a < b );
 
-        input.forEach(i => t.insertValue(i));
+        input.forEach( i => t.insertValue( i ) );
         
-        preorder(t);
+        preorder( t, preorderOutput );
 
-        inorder(t);
+        inorder( t, inorderOutput );
 
-        postorder(t);
+        postorder( t, postorderOutput );
 
     });
 }
 
-let input = [5, 7, 2131345646, 9, 4, 13, 12415486];
-let input1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let input2 = [377, 603, 158, 55, 21, 44, 583, 35, 534, 435];
+const inputs = process.argv.slice(2);
 
-let inputs = [input, input1, input2]
-
-run( inputs )
+run( inputs );
