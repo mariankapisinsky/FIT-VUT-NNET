@@ -25,7 +25,7 @@ function equals ( a, b ) {
         });
     };
 
-    return a.length === b.length ? eq( a, b ) : false;
+    return a.length === b.length ? eq ( a, b ) : false;
 }
 
 /**
@@ -39,11 +39,11 @@ function preorder ( t, gt ) {
 
     let output = Array();
 
-    for (let n of t.preorder()) {
+    for ( let n of t.preorder() ) {
         output.push(n);
     }
 
-    if (equals(output, gt)) {
+    if ( equals(output, gt) ) {
         console.log("[OK] Preorder passed");
     }
     else {
@@ -62,11 +62,11 @@ function inorder ( t, gt ) {
 
     let output = Array();
 
-    for (let n of t.inorder()) {
+    for ( let n of t.inorder() ) {
         output.push(n);
     }
 
-    if (equals(output, gt)) {
+    if ( equals( output, gt ) ) {
         console.log("[OK] Inorder passed");
     }
     else {
@@ -85,15 +85,46 @@ function postorder ( t, gt ) {
 
     let output = Array();
 
-    for (let n of t.postorder()) {
+    for ( let n of t.postorder() ) {
         output.push(n);
     }
 
-    if (equals(output, gt)) {
+    if ( equals( output, gt ) ) {
         console.log("[OK] Postorder passed");
     }
     else {
         console.log("[FAIL] Postorder failed");
+    }
+}
+
+/**
+ * Obtains two preorder traversal generators
+ * and compares a mix of them to the ground truth data.
+ * @param t a binary tree
+ * @param gt ground truth data
+ */
+
+function mix ( t, gt ) {
+
+    let output = Array();
+
+    let pre1 = t.preorder();
+
+    let pre2 = t.preorder();
+
+    output.push( pre1.next().value );
+    output.push( pre1.next().value );
+    output.push( pre2.next().value );
+    output.push( pre1.next().value );
+    output.push( pre2.next().value );
+    output.push( pre2.next().value );
+    output.push( pre1.next().value );
+
+    if ( equals( output, gt ) ) {
+        console.log("[OK] Mix passed");
+    }
+    else {
+        console.log("[FAIL] Mix failed");
     }
 }
 
@@ -117,21 +148,30 @@ function run ( files ) {
         
         console.log("[TEST] Test file: " + filename)
 
-        let preorderOutput = output[1].split(",").map(Number);
-
-        let inorderOutput = output[3].split(",").map(Number);
-
-        let postorderOutput = output[5].split(",").map(Number);
-
         let t = new Tree ( (a,b) => a < b );
 
         input.forEach( i => t.insertValue( i ) );
-        
-        preorder( t, preorderOutput );
 
-        inorder( t, inorderOutput );
+        if ( output[0].trim() === "mix" ) {
 
-        postorder( t, postorderOutput );
+            let mixOutput = output[1].split(",").map(Number);
+
+            mix ( t, mixOutput );
+        }
+        else {
+
+            let preorderOutput = output[1].split(",").map(Number);
+
+            let inorderOutput = output[3].split(",").map(Number);
+
+            let postorderOutput = output[5].split(",").map(Number);
+
+            preorder ( t, preorderOutput );
+
+            inorder ( t, inorderOutput );
+
+            postorder ( t, postorderOutput );
+        }
 
     });
 }
