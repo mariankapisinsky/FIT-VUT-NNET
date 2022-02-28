@@ -30,7 +30,7 @@ function equals ( a, b ) {
 
 /**
  * Obtains preorder traversal of a given binary tree
- * and compares it to the ground truth data
+ * and compares it to the ground truth data.
  * @param t a binary tree
  * @param gt ground truth data
  */
@@ -53,7 +53,7 @@ function preorder ( t, gt ) {
 
 /**
  * Obtains inorder traversal of a given binary tree
- * and compares it to the ground truth data
+ * and compares it to the ground truth data.
  * @param t a binary tree
  * @param gt ground truth data
  */
@@ -76,7 +76,7 @@ function inorder ( t, gt ) {
 
 /**
  * Obtains postorder traversal of a given binary tree
- * and compares it to the ground truth data
+ * and compares it to the ground truth data.
  * @param t a binary tree
  * @param gt ground truth data
  */
