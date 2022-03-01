@@ -1,7 +1,7 @@
 /**
- * Binary Tree Module Tests - WAP 2022
+ * @file Binary Tree Module Tests - WAP 2022 /
+ * Tested on Node.js version 17.6.0
  * @author xkapis00
- * @file test.mjs
  */
 
 // Import the file system lib for file manipulation.
