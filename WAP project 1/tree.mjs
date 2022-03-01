@@ -1,7 +1,6 @@
 /**
- * Binary Tree Module - WAP 2022
+ * @file Binary Tree Module - WAP 2022
  * @author xkapis00
- * @file tree.mjs
  */
 
 export { Tree };
@@ -13,9 +12,11 @@ export { Tree };
  */ 
 
 function Node ( value ) {
+
     this.left = null;
     this.right = null;
     this.value = value;
+    
 }
 
 /**
@@ -25,98 +26,100 @@ function Node ( value ) {
  */ 
 
 function Tree ( compare ) {
+
     this.root = null;
     this.compare = compare;
-}
-
-/**
- * Insert value into the tree.
- * @param {any} value a value to be inserted
- */
-
-Tree.prototype.insertValue = function ( value ) {
-
-    this.root = this.insert ( this.root, value )
-}
-
-/**
- * Helper function for recursive value insert into the tree.
- * @param {any} node a node to insert to
- * @param {any} value a value to be inserted into a new node
- */
-
-Tree.prototype.insert = function ( node, value ) {
-
-    if ( !node ) {
-        return new Node ( value );
+    
+    /**
+     * Insert value into the tree.
+     * @param {any} value a value to be inserted
+     */
+    
+    Tree.prototype.insertValue = function ( value ) {
+        
+        this.root = this.insert ( this.root, value )
     }
 
-    if ( this.compare( value, node.value ) ) {
-        node.left = this.insert ( node.left, value )
-    }
-    else {
-        node.right = this.insert ( node.right, value )
-    }
+    /**
+     * Helper function for recursive value insert into the tree.
+     * @param {any} node a node to insert to
+     * @param {any} value a value to be inserted into a new node
+     */
 
-    return node;
-} 
-
-/**
- * Preorder traversal.
- * @returns a generator for iterable preorder traversal
- */ 
-
-Tree.prototype.preorder = function* () {
-
-    var preorderIterator = function* preorderIterator ( node ) {
-
-        if ( node ) {
-
-            yield node.value;
-            yield* preorderIterator ( node.left );
-            yield* preorderIterator ( node.right );
+    Tree.prototype.insert = function ( node, value ) {
+        
+        if ( !node ) {
+            return new Node ( value );
         }
-    }
-
-    yield* preorderIterator ( this.root )
-}
-
-/**
- * Inorder traversal.
- * @returns a generator for iterable inorder traversal
- */ 
-
-Tree.prototype.inorder = function* () {
-
-    var inorderIterator = function* inorderIterator ( node ) {
-
-        if ( node ) {
-
-            yield* inorderIterator ( node.left );
-            yield node.value;
-            yield* inorderIterator ( node.right );
+        
+        if ( this.compare( value, node.value ) ) {
+            node.left = this.insert ( node.left, value )
         }
-    }
+        else {
+            node.right = this.insert ( node.right, value )
+        }
+        
+        return node;
+    } 
 
-    yield* inorderIterator ( this.root )
-}
+    /**
+     * Preorder traversal.
+     * @returns a generator for iterable preorder traversal
+     */ 
 
-/**
- * Postorder traversal.
- * @returns a generator for iterable postorder traversal
- */ 
-
-Tree.prototype.postorder = function* () {
-
-    var postorderIterator = function* postorderIterator ( node ) {
-
-        if ( node ) {
+    Tree.prototype.preorder = function* () {
+        
+        var preorderIterator = function* preorderIterator ( node ) {
             
-            yield* postorderIterator ( node.left );
-            yield* postorderIterator ( node.right );
-            yield node.value;
+            if ( node ) {
+                
+                yield node.value;
+                yield* preorderIterator ( node.left );
+                yield* preorderIterator ( node.right );
+            }
         }
+        
+        yield* preorderIterator ( this.root )
     }
 
-    yield* postorderIterator ( this.root )
+    /**
+     * Inorder traversal.
+     * @returns a generator for iterable inorder traversal
+     */ 
+
+    Tree.prototype.inorder = function* () {
+        
+        var inorderIterator = function* inorderIterator ( node ) {
+            
+            if ( node ) {
+                
+                yield* inorderIterator ( node.left );
+                yield node.value;
+                yield* inorderIterator ( node.right );
+            }
+        }
+        
+        yield* inorderIterator ( this.root )
+    }
+
+    /**
+     * Postorder traversal.
+     * @returns a generator for iterable postorder traversal
+     */ 
+
+    Tree.prototype.postorder = function* () {
+        
+        var postorderIterator = function* postorderIterator ( node ) {
+            
+            if ( node ) {
+                
+                yield* postorderIterator ( node.left );
+                yield* postorderIterator ( node.right );
+                yield node.value;
+            }
+        }
+        
+        yield* postorderIterator ( this.root )
+    }
+
 }
