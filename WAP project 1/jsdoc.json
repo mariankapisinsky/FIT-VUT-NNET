@@ -1,7 +1,7 @@
 {
     "source": {
         "include": ["."],
-        "includePattern": ".mjs$",
+        "includePattern": "tree.mjs$",
         "excludePattern": ""
     }
 }
