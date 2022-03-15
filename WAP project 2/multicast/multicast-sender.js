@@ -30,12 +30,12 @@ sender.bind(port, function () {
 
 console.log('Socket created');
   
-sender.on('message', function( msg ) {
+sender.on( 'message', function( msg ) {
  
     console.log(msg.toString());
 });
  
-sender.on('close', function() {
+sender.on( 'close', function() {
  
     console.log('Socket closed');
 });
@@ -45,6 +45,7 @@ var stdin = readline.createInterface( process.stdin );
 stdin.on( 'line', function ( line ) {
  
     sender.send(line, port, maddr);
+    console.log( 'Sending %d bytes to %s:%d : %s', line.length, maddr, port, line );
 });
  
 stdin.on( 'close', function () {

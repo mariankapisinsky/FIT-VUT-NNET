@@ -13,24 +13,28 @@ var port = 2022;
 
 if ( argv.length === 4 ) {
 
-    dns.resolve4(argv[2], function( err, records ) {
-        if ( err ) { 
-            console.log(err);
+    dns.lookup( argv[2], { family: 4 }, function ( err, address ) {
+            
+        if ( err ) {
+
+            console.log( err );
+            
             exit(1);
         }
         else {
-            host = records[0];
+
+            host = address;
         }
     });
-
-    port = parseInt(argv[3], 10);
-};
+    
+    port = argv[3];
+}
 
 var client = new net.Socket();
 
 client.connect(port, host, function() {
 
-	console.log('Connected');
+	console.log( 'Connected.' );
 
     var stdin = readline.createInterface( process.stdin );
 

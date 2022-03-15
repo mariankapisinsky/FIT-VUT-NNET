@@ -15,12 +15,15 @@ var server = dgram.createSocket( 'udp4' );
 
 server.on( 'message', function ( msg, info ) {
 
-    console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
-    
-    msg = msg.toString().toUpperCase();
+    msg = msg.toString();
 
-    server.send(msg, info.port, info.address);
-  
+    console.log( 'Received %d bytes from %s:%d : %s', msg.length, info.address, info.port, msg );
+    
+    msg = msg.toUpperCase();
+
+    server.send( msg, info.port, info.address );
+
+    console.log( 'Sending %d bytes to %s:%d : %s', msg.length, info.address, info.port, msg );
 });
 
 server.on('listening', function() {
@@ -28,4 +31,4 @@ server.on('listening', function() {
     console.log('Running...');
 });
 
-server.bind(port);
+server.bind( port );

@@ -47,7 +47,7 @@ async function do_work( socket ) {
 
     let name = socket.remoteAddress + ":" + socket.remotePort;
 
-    while ( true) {
+    while ( true ) {
 
         console.log('Waiting for data from ' + name);
         

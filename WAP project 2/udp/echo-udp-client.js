@@ -13,31 +13,35 @@ var port = 2022;
  
 if ( argv.length === 4 ) {
  
-    dns.resolve4(argv[2], function( err, records ) {
-        if ( err ) { 
-            console.log(err);
+    dns.lookup( argv[2], { family: 4 }, function ( err, address ) {
+            
+        if ( err ) {
+
+            console.log( err );
+
             exit(1);
         }
         else {
-            host = records[0];
+
+            host = address;
         }
     });
  
     port = parseInt(argv[3], 10);
 };
  
-var client = dgram.createSocket('udp4');
+var client = dgram.createSocket( 'udp4' );
 
-console.log('Socket created');
+console.log( 'Socket created.' );
   
-client.on('message', function( msg ) {
+client.on( 'message', function( msg ) {
  
     console.log(msg.toString());
 });
  
-client.on('close', function() {
+client.on( 'close', function () {
  
-    console.log('Socket closed');
+    console.log('Socket closed.');
 });
  
 var stdin = readline.createInterface( process.stdin );
