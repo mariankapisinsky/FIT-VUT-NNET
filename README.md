@@ -15,4 +15,6 @@ PRL project 2 - Mesh Multiplication - 7/10
 
 UPA project - Extraction, Storage, and Data Processing (COVID-19 in Czechia) - 20/20
 
-WAP project 1 - Binary Search Tree in JavaScript ES5 - ?/10
+WAP project 1 - Binary Search Tree in JavaScript ES5 - 7.7/10
+
+WAP project 2 - Examples of Socket Programming in Node.js - ?/30
