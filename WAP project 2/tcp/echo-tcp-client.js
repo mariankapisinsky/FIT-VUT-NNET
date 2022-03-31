@@ -18,13 +18,15 @@ if ( argv.length === 4 ) {
         if ( err ) {
 
             console.log( err );
-            
-            exit(1);
+            exit( 1 );
+
         }
         else {
 
             host = address;
+            
         }
+
     });
     
     port = argv[3];
@@ -32,31 +34,34 @@ if ( argv.length === 4 ) {
 
 var client = new net.Socket();
 
-client.connect(port, host, function() {
+client.connect( port, host, () => {
 
 	console.log( 'Connected.' );
 
     var stdin = readline.createInterface( process.stdin );
 
-    stdin.on( 'line', function ( line ) {
+    stdin.on( 'line', ( line ) => {
 
-        client.write(line);
+        client.write( line );
+
     });
 
-    stdin.on( 'close', function () {
+    stdin.on( 'close', () => {
 
         client.destroy();
+
     });
 
 });
 
-client.on('data', function(data) {
+client.on('data', ( data ) => {
 
-	console.log(data.toString());
+	console.log( data.toString() );
+
 });
 
-client.on('close', function() {
+client.on('close', () => {
 
-	console.log('Connection closed');
+	console.log( 'Connection closed.' );
 
 });

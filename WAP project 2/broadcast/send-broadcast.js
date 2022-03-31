@@ -10,37 +10,49 @@ const readline = require('readline');
 if ( argv.length === 4 ) {
   
     var baddr = argv[2];
-  
     var port = argv[3];
+
 }
 else {
 
     console.log( 'Usage: node send-broadcast.js <broadcast IP address> <port>' );
-
-    exit(1);
+    exit( 1 );
 }
 
 var sender = dgram.createSocket( { type: 'udp4', reuseAddr: true } );
 
-sender.on( 'close', function() {
+sender.on( 'close', () => {
     
-    console.log( 'Socket closed' );
+    console.log( 'Socket closed.' );
+
 });
 
-var stdin = readline.createInterface( process.stdin );
-
-stdin.on( 'line', function ( line ) {
+function send_line ( line ) {
     
     sender.send( line, port, baddr );
     
     console.log( 'Sending %d bytes to %s:%d : %s', line.length, baddr, port, line );
+
+}
+
+var stdin = readline.createInterface( process.stdin );
+
+stdin.on( 'line', ( line ) => {
+    
+    send_line ( line );
+
 });
 
-stdin.on( 'close', function () {
+stdin.on( 'close', () => {
     
     sender.close();
+
 });
 
-sender.bind(port, () => { sender.setBroadcast(true); });
+sender.bind( port, () => { 
+    
+    sender.setBroadcast( true ); 
 
-console.log( 'Socket created' );
+});
+
+console.log( 'Socket created.' );

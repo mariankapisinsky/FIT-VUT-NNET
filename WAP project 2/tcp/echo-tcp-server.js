@@ -21,14 +21,16 @@ var server = net.createServer ( function ( socket ) {
 
 		data = data.toUpperCase();
 
-		socket.write(data);
+		socket.write( data );
 
 		console.log( 'Sending %d bytes to %s : %s', data.length, name, data );
+
 	});
 
-	socket.on( 'close', function ( ) {
+	socket.on( 'close', () => {
 
-		console.log("Connection from " + name + " closed.");
+		console.log( 'Connection from %s closed.', name );
+		
 	});
 
 });
@@ -38,4 +40,5 @@ var port = 2022;
 if ( argv.length === 3 ) port = argv[2];
 
 server.listen( port, '127.0.0.1' );
+
 console.log( 'Running on port %s...', port);

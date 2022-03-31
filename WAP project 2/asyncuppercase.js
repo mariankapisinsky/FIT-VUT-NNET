@@ -13,34 +13,52 @@ if ( argv.length === 3 ) port = argv[2];
 
 function wait_for_connection ( server ) {
 
-    return new Promise ( (resolve) => {
-        server.once('connection', resolve);
+    return new Promise ( ( resolve ) => {
+
+        server.once( 'connection', resolve );
+
     });
+
 }
 
 function wait_for_data ( socket ) {
 
-    return new Promise ( (resolve) => {
-        socket.once('data', resolve);
-        socket.once('close', resolve);
+    const data = new Promise ( ( resolve ) => {
+
+        socket.once( 'data', resolve );
+
     });
+
+    const close = new Promise ( ( resolve ) => {
+
+        socket.once( 'close', resolve );
+
+    });
+
+    return Promise.race( [data, close] ).then( ( value ) => {
+
+        return value;
+
+    });
+
 }
 
 async function run ( server ) {
 
-    console.log('Waiting for connection...');
+    console.log( 'Waiting for connection...' );
 
-    let socket = await wait_for_connection(server);
+    let socket = await wait_for_connection( server );
 
-    let name = socket.remoteAddress + ":" + socket.remotePort;
+    let name = socket.remoteAddress + ':' + socket.remotePort;
 
-    console.log('Connection from ' + name);
+    console.log( 'Connection from %s.', name );
 
     run( server );
 
     await do_work( socket );
 
-    console.log("Connection from " + name + " closed");
+    console.log( 'Connection from %s closed.', name );
+
 }
 
 async function do_work( socket ) {
@@ -49,25 +67,26 @@ async function do_work( socket ) {
 
     while ( true ) {
 
-        console.log('Waiting for data from ' + name);
+        console.log( 'Waiting for data from %s...', name );
         
         let data = await wait_for_data( socket );
 
         if ( !data ) break;
         
-        console.log('Receveid: ' + data);
+        console.log( 'Received: %s', data );
 
-        data = data.toString().toUpperCase();
+        data = data.toString();
             
-        await socket.write(data);
+        await socket.write( data.toUpperCase() );
             
-        console.log('Uppercased data sent back to: ' + name);
+        console.log( 'Uppercased data sent back to: %s', name );
+        
     }
 
 }
 
-const server = net.createServer()
+const server = net.createServer();
 
 server.listen( port, '127.0.0.1', { reuseAddr: true } );
 
-run( server )
+run( server );
