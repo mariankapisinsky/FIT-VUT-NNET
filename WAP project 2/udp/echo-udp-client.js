@@ -13,13 +13,13 @@ var port = 2022;
  
 if ( argv.length === 4 ) {
  
-    dns.lookup( argv[2], { family: 4 }, function ( err, address ) {
+    dns.lookup( argv[2], { family: 4 }, ( err, address ) => {
             
         if ( err ) {
 
             console.log( err );
 
-            exit(1);
+            exit( 1 );
         }
         else {
 
@@ -27,31 +27,32 @@ if ( argv.length === 4 ) {
         }
     });
  
-    port = parseInt(argv[3], 10);
+    port = parseInt( argv[3], 10 );
 };
  
 var client = dgram.createSocket( 'udp4' );
 
 console.log( 'Socket created.' );
   
-client.on( 'message', function( msg ) {
+client.on( 'message', ( msg ) => {
  
     console.log(msg.toString());
 });
  
-client.on( 'close', function () {
+client.on( 'close', () => {
  
     console.log('Socket closed.');
 });
  
 var stdin = readline.createInterface( process.stdin );
  
-stdin.on( 'line', function ( line ) {
+stdin.on( 'line', ( line ) => {
  
-    client.send(line, port, host);
+    client.send( line, port, host );
+
 });
  
-stdin.on( 'close', function () {
+stdin.on( 'close', () => {
  
     client.close();
 });

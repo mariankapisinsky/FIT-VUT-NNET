@@ -1,0 +1,14 @@
+.wap-slides {
+    text-align: center;
+    font-size: 22px;
+}
+
+.wap-slides h1, .wap-slides h2 {
+    text-transform: none;
+    font-size: 72px;
+}
+
+.wap-slides h3 {
+    text-transform: none;
+    font-size: 36px;
+}

@@ -14,35 +14,30 @@ if ( argv.length === 4 ) {
 }
 else {
 
-    console.log("Usage: node multicast-sender.js <multicast IP address> <port>");
+    console.log( 'Usage: node multicast-sender.js <multicast IP address> <port>' );
     exit( 1 );
 
-}
-
-function read_message ( msg, info ) {
-    
-    console.log('Received %d bytes from %s:%d : %s', msg.length, info.address, info.port, msg.toString());
 }
 
 var listener = dgram.createSocket( { type: 'udp4', reuseAddr: true } );
 
 listener.on( 'message', ( msg, info ) => {
     
-    read_message( msg, info );
+    console.log( 'Received %d bytes from %s:%d : %s', msg.length, info.address, info.port, msg.toString() );
     
 });
 
-listener.on( 'listening', () => {
-    
-    listener.addMembership(maddr);
-    console.log('Listening...');
-    
-});
+listener.on( 'listening', () => { console.log( 'Listening...' ); });
 
 listener.on( 'close', () => {
 
-    listener.dropMembership(maddr);
+    listener.dropMembership( maddr );
+    console.log( 'Socket closed.' );
+
+} );
+
+listener.bind( port, () => {
+
+    listener.addMembership( maddr );
 
 });
-
-listener.bind(port);

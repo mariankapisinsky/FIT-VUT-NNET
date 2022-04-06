@@ -7,13 +7,13 @@
 const net = require('net');
 const { argv } = require('process');
 
-var server = net.createServer ( function ( socket ) {
+var server = net.createServer ( ( socket ) => {
 
 	var name = socket.remoteAddress + ":" + socket.remotePort;
 
 	console.log( 'Connection from %s.', name );
 	
-	socket.on( 'data', function ( data ) {
+	socket.on( 'data', ( data ) => {
 
 		data = data.toString();
 
@@ -21,9 +21,9 @@ var server = net.createServer ( function ( socket ) {
 
 		data = data.toUpperCase();
 
-		socket.write( data );
-
 		console.log( 'Sending %d bytes to %s : %s', data.length, name, data );
+		
+		socket.write( data );
 
 	});
 
@@ -41,4 +41,4 @@ if ( argv.length === 3 ) port = argv[2];
 
 server.listen( port, '127.0.0.1' );
 
-console.log( 'Running on port %s...', port);
+console.log( 'Running on port %s...', port );

@@ -20,8 +20,8 @@ else {
 
 var listener = dgram.createSocket( { type: 'udp4', reuseAddr: true } );
 
-function read_message ( msg, info ) {
-    
+listener.on( 'message', ( msg, info ) => {
+
     console.log( 'Received %d bytes from %s:%d : %s', msg.length, info.address, info.port, msg.toString() );
 
     if ( msg.toString() === "END." ) {
@@ -30,15 +30,9 @@ function read_message ( msg, info ) {
         listener.close()
 
     }
-    
-}
-
-listener.on( 'message', ( msg, info ) => {
-
-    read_message( msg, info);
 
 });
 
-listener.bind( port );
+listener.on( 'listening', () => { console.log( 'Listening...' ); } );
 
-listener.on( 'listening', () => { console.log( 'Listening...' ); });
+listener.bind( port );

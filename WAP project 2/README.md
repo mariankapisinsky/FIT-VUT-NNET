@@ -22,3 +22,7 @@ This directory contains an example of UDP network communication using the **dgra
 ## asyncuppercase.js
 
 This is an example of an asynchronous server using the **net** lib and async/await.
+
+## slides/
+
+This directory contains presentation slides in Reveal.js.

@@ -15,14 +15,8 @@ if ( argv.length === 5 ) {
 }
 else {
 
-    console.log("Usage: node multicast-sender.js <multicast IP address> <port> <ttl>");
-    exit(1);
-}
-
-function send_line ( line ) {
-    
-    sender.send(line, port, maddr);
-    console.log( 'Sending %d bytes to %s:%d : %s', line.length, maddr, port, line );
+    console.log( 'Usage: node multicast-sender.js <multicast IP address> <port> <ttl>' );
+    exit( 1 );
 }
 
 var sender = dgram.createSocket( { type: 'udp4', reuseAddr: true } );
@@ -34,15 +28,18 @@ sender.on( 'close', () => {
 
 sender.bind( port, () => {
 
-    sender.setMulticastTTL(ttl);
-    sender.setMulticastLoopback(true);
+    sender.setMulticastTTL( ttl );
+    sender.setMulticastLoopback( true );
 });
 
 var stdin = readline.createInterface( process.stdin );
 
 stdin.on( 'line', ( line ) => {
     
-    send_line( line )
+    console.log( 'Sending %d bytes to %s:%d : %s', line.length, maddr, port, line );
+    
+    sender.send( line, port, maddr );
+
 });
 
 stdin.on( 'close', () => {
@@ -50,4 +47,4 @@ stdin.on( 'close', () => {
     sender.close();
 });
 
-console.log('Socket created');
+console.log( 'Socket created' );

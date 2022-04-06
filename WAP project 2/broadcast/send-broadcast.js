@@ -27,19 +27,13 @@ sender.on( 'close', () => {
 
 });
 
-function send_line ( line ) {
-    
-    sender.send( line, port, baddr );
-    
-    console.log( 'Sending %d bytes to %s:%d : %s', line.length, baddr, port, line );
-
-}
-
 var stdin = readline.createInterface( process.stdin );
 
 stdin.on( 'line', ( line ) => {
     
-    send_line ( line );
+    console.log( 'Sending %d bytes to %s:%d : %s', line.length, baddr, port, line );
+    
+    sender.send( line, port, baddr );
 
 });
 
