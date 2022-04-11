@@ -41,6 +41,7 @@ client.connect( port, host, () => {
     stdin.on( 'line', ( line ) => {
  
         client.send(line);
+        
     });
  
     stdin.on( 'close', () => {
@@ -54,6 +55,7 @@ client.connect( port, host, () => {
 client.on( 'message', ( msg ) => {
  
     console.log( msg.toString() );
+
 });
  
 client.on( 'close', () => {

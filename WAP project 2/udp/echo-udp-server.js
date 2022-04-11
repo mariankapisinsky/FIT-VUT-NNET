@@ -23,13 +23,14 @@ server.on( 'message', ( msg, info ) => {
 
     console.log( 'Sending %d bytes to %s:%d : %s', msg.length, info.address, info.port, msg );
     
-    server.send( msg.toUpperCase(), info.port, info.address );
+    server.send( msg, info.port, info.address );
 
 });
 
 server.on( 'listening', () => {
 
     console.log( 'Running...' );
+    
 });
 
 server.bind( port );

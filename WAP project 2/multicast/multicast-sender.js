@@ -30,6 +30,7 @@ sender.bind( port, () => {
 
     sender.setMulticastTTL( ttl );
     sender.setMulticastLoopback( true );
+    
 });
 
 var stdin = readline.createInterface( process.stdin );
@@ -45,6 +46,7 @@ stdin.on( 'line', ( line ) => {
 stdin.on( 'close', () => {
     
     sender.close();
+
 });
 
 console.log( 'Socket created' );
