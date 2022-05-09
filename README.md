@@ -1,6 +1,8 @@
 # FIT-VUT-NNET
 Some of the school assignments from my master degree study at FIT VUT, NNET specialization
 
+DFAa project - Digital Investigation - 15/15
+
 FLP project 1 - Context-Free Grammar Transformation Algorithms (removing simple rules, Chomsky Normal Form) - 12/12
 
 GAL project - Longest Path Problem in general directed weighted graphs - 20/25
@@ -17,4 +19,4 @@ UPA project - Extraction, Storage, and Data Processing (COVID-19 in Czechia) - 2
 
 WAP project 1 - Binary Search Tree in JavaScript ES5 - 7.7/10
 
-WAP project 2 - Examples of Socket Programming in Node.js - ?/30
+WAP project 2 - Examples of Socket Programming in Node.js - 30/30
